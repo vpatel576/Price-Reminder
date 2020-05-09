@@ -62,7 +62,7 @@ if len(df) >= 0:
 
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
-    server.login(sender,'IMAQuantOps3$')
+    server.login(sender,'Pass-word here')
 
     server.sendmail(sender, receiver, msg.as_string())
     server.quit()

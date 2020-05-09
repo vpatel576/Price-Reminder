@@ -9,14 +9,10 @@ from datetime import datetime
 from datetime import date
 from datetime import time, timedelta
 
-# me == my email address
-# you == recipient's email address
 sender = #Sender's Email
 receiver =  #Receiver's email
 date_today = date.today()
 
-
-# Create message container - the correct MIME type is multipart/alternative.
 msg = MIMEMultipart('alternative')
 msg['Subject'] =  str(date_today.month)+ '/' + str(date_today.day) + '/' +str(date_today.year)+" || Price Alert"
 msg['From'] = sender

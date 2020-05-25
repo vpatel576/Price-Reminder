@@ -55,14 +55,20 @@ for i in range(len(df)):
 
 html = df.to_html()
 
-if len(df) >= 0:
-    p2 = MIMEText(html, 'html')
+def email_send():
+    if len(df) >= 0:
+        p2 = MIMEText(html, 'html')
 
-    msg.attach(p2)
+        msg.attach(p2)
 
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login(sender,'Pass-word here')
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(sender,'IMAQuantOps3$')
 
-    server.sendmail(sender, receiver, msg.as_string())
-    server.quit()
+        server.sendmail(sender, receiver, msg.as_string())
+        server.quit()
+
+##Only sends email on the weekdays
+day = date_today.isoweekday()
+if day != 7 and day != 6:
+    email_send()

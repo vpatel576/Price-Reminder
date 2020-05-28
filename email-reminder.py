@@ -8,22 +8,25 @@ import pandas_datareader.data as web
 from datetime import datetime
 from datetime import date
 from datetime import time, timedelta
+from ima_info import targets, tickers, ima_emails
+import config
 
-sender = #Sender's Email
-receiver =  #Receiver's email
+import alpaca_trade_api as tradeapi
+
+sender = #Sender_email
+receiver = #Receiver_email
+password = #password
 date_today = date.today()
 
+# Create message container - the correct MIME type is multipart/alternative.
 msg = MIMEMultipart('alternative')
 msg['Subject'] =  str(date_today.month)+ '/' + str(date_today.day) + '/' +str(date_today.year)+" || Price Alert"
 msg['From'] = sender
 msg['To'] = ", ".join(receiver)
 
-tickers = #list of tickers
-target = #list of target prices
-
-start = date.today()-timedelta(days = 2)
+# Getting all the Data
+start = date.today()-timedelta(days = 4)
 end = date.today()
-
 def func(ticker, target):
     i = 0
     dict_ini = {}
@@ -63,7 +66,7 @@ def email_send():
 
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
-        server.login(sender,'IMAQuantOps3$')
+        server.login(sender,password)
 
         server.sendmail(sender, receiver, msg.as_string())
         server.quit()

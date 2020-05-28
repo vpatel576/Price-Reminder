@@ -10,8 +10,7 @@ from datetime import date
 from datetime import time, timedelta
 from ima_info import targets, tickers, ima_emails
 import config
-
-import alpaca_trade_api as tradeapi
+#import alpaca_trade_api as tradeapi
 
 sender = #Sender_email
 receiver = #Receiver_email

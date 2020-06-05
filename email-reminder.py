@@ -19,11 +19,14 @@ date_today = date.today()
 
 # Create message container - the correct MIME type is multipart/alternative.
 msg = MIMEMultipart('alternative')
-msg['Subject'] =  'New Format, Who Dis || '+str(date_today.month)+ '/' + str(date_today.day) + '/' +str(date_today.year)+" || Price Alert"
+msg['Subject'] = str(date_today.month)+ '/' + str(date_today.day) + '/' +str(date_today.year)+" || Price Alert"
 msg['From'] = sender
 msg['To'] = ", ".join(receiver)
 
 # Getting all the Data
+start = date.today()-timedelta(days = 4)
+end = date.today()
+
 start = date.today()-timedelta(days = 4)
 end = date.today()
 def func(ticker, target):
@@ -38,7 +41,7 @@ def func(ticker, target):
         dict_ini[ticker[i]]={}
         dict_ini[ticker[i]]['Price']= price
         dict_ini[ticker[i]]['Target']= target[i]
-        dict_ini[ticker[i]]['Move Today'] = str(round(((price_data[-1]-price_data[-2])/price_data[-2])*100,2))+'%'
+        dict_ini[ticker[i]]['Move Today'] = round(((price_data[-1]-price_data[-2])/price_data[-2])*100,2)
         dict_ini[ticker[i]]['% of Target']= round(of_target*100,2)
 
     return dict_ini
@@ -56,6 +59,7 @@ for i in range(len(df)):
     df.replace(df['% of Target'][i],str(df['% of Target'][i])+'%',inplace = True)
     df.replace(df['Price'][i],'$'+str(df['Price'][i]),inplace = True)
     df.replace(df['Target'][i],'$'+str(df['Target'][i]),inplace = True)
+    df.replace(df['Move Today'][i],str(df['Move Today'][i])+'%',inplace = True)
 
 html = df.to_html()
 

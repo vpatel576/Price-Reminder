@@ -11,8 +11,6 @@ from datetime import time, timedelta
 from .ima_info import targets, tickers, ima_emails
 import config
 
-#import alpaca_trade_api as tradeapi
-
 sender = ##
 receiver = ##
 password = ##

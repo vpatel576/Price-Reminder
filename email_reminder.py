@@ -70,9 +70,6 @@ def email_send():
         server.sendmail(sender, receiver, msg.as_string())
         server.quit()
 
-
-email_send()
-
 ##Only sends email on the weekdays
 day = date_today.isoweekday()
 if day != 7 and day != 6:

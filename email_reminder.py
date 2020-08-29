@@ -10,9 +10,9 @@ from datetime import date
 from datetime import time, timedelta
 from ima_info import ima_emails, info_dict
 
-sender = 'ima.quantops@gmail.com'
-receiver =  ['testa199101@gmail.com'] #ima_emails
-password = 'IMAQuantOps3$'
+sender = ##
+receiver =  #ima_emails
+password = ##
 date_today = date.today()
 
 # Create message container - the correct MIME type is multipart/alternative.
@@ -54,6 +54,8 @@ for i in range(len(df)):
     df.replace(df['Target'][i],'$'+str(df['Target'][i]),inplace = True)
 
 html = df.to_html()
+
+#Sending the emmail
 
 def email_send():
     if len(df) >= 0:

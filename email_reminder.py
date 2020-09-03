@@ -50,6 +50,7 @@ df = df[(df['% of Target'] > 97)]
 
 for i in range(len(df)):
     df.replace(df['% of Target'][i],str(df['% of Target'][i])+'%',inplace = True)
+    df.replace(df['Move Today'][i],str(df['Move Today'][i])+'%',inplace = True)
     df.replace(df['Price'][i],'$'+str(df['Price'][i]),inplace = True)
     df.replace(df['Target'][i],'$'+str(df['Target'][i]),inplace = True)
 
